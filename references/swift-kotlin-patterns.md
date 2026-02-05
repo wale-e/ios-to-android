@@ -1,5 +1,21 @@
 # Swift to Kotlin Patterns
 
+## Table of Contents
+
+- [Basic Syntax](#basic-syntax)
+- [Closures / Lambdas](#closures--lambdas)
+- [Classes and Structs](#classes-and-structs)
+- [Enums](#enums)
+- [Protocols / Interfaces](#protocols--interfaces)
+- [Extensions](#extensions)
+- [Generics](#generics)
+- [Error Handling](#error-handling)
+- [Collections](#collections)
+- [Higher-Order Functions](#higher-order-functions)
+- [Async/Await & Concurrency](#asyncawait--concurrency)
+- [Combine → Flow](#combine--flow)
+- [Property Wrappers → Delegated Properties](#property-wrappers--delegated-properties)
+
 ## Basic Syntax
 
 ### Variables and Constants
@@ -82,7 +98,7 @@ func fetch() throws -> Data       @Throws(Exception::class)
 func fetch() async throws -> Data suspend fun fetch(): Data
 ```
 
-### Closures / Lambdas
+## Closures / Lambdas
 
 ```swift
 // Swift                          // Kotlin
@@ -113,7 +129,7 @@ func store(_ action:              fun store(action: () -> Unit) {
 }                                 }
 ```
 
-### Classes and Structs
+## Classes and Structs
 
 ```swift
 // Swift Struct → Kotlin Data Class
@@ -126,7 +142,7 @@ struct User {                     data class User(
 // Swift Class → Kotlin Class
 class UserManager {               class UserManager {
     private var users: [User] = []    private var users: MutableList<User> = mutableListOf()
-    
+
     func add(_ user: User) {          fun add(user: User) {
         users.append(user)                users.add(user)
     }                                 }
@@ -151,7 +167,7 @@ static let shared = Manager()     companion object {
                                   }
 ```
 
-### Enums
+## Enums
 
 ```swift
 // Swift                          // Kotlin
@@ -183,7 +199,7 @@ case .failure(let error):         }
 }
 ```
 
-### Protocols / Interfaces
+## Protocols / Interfaces
 
 ```swift
 // Swift Protocol                 // Kotlin Interface
@@ -210,7 +226,7 @@ struct User: Identifiable {       data class User(
 }                                 ) : Identifiable
 ```
 
-### Extensions
+## Extensions
 
 ```swift
 // Swift                          // Kotlin
@@ -230,7 +246,7 @@ extension Array where             fun <T : Comparable<T>> List<T>.isSorted(): Bo
 }
 ```
 
-### Generics
+## Generics
 
 ```swift
 // Swift                          // Kotlin
@@ -243,7 +259,7 @@ func swap<T>(_ a: inout T,        fun <T> swap(a: T, b: T): Pair<T, T> {
 
 struct Stack<Element> {           class Stack<T> {
     private var items: [Element]      private val items = mutableListOf<T>()
-        = []                      
+        = []
     mutating func push(_ item:        fun push(item: T) {
         Element) {                        items.add(item)
         items.append(item)            }
@@ -258,7 +274,7 @@ func compare<T: Comparable &      fun <T> compare(a: T, b: T) where T : Comparab
     Identifiable>(_ a: T, _ b: T)
 ```
 
-### Error Handling
+## Error Handling
 
 ```swift
 // Swift                          // Kotlin
@@ -288,7 +304,7 @@ let data = try? fetch()           val data = runCatching { fetch() }.getOrNull()
 let data = try! fetch()           val data = fetch() // if it throws, crashes
 ```
 
-### Collections
+## Collections
 
 ```swift
 // Swift                          // Kotlin
@@ -321,7 +337,7 @@ set.remove(1)                     mutableSet.remove(1)
 set.contains(2)                   set.contains(2)
 ```
 
-### Higher-Order Functions
+## Higher-Order Functions
 
 ```swift
 // Swift                          // Kotlin
@@ -352,7 +368,7 @@ array                             array
     .sorted()                         .sorted()
 ```
 
-### Async/Await & Concurrency
+## Async/Await & Concurrency
 
 ```swift
 // Swift                          // Kotlin
@@ -389,7 +405,7 @@ func updateUI() { }                   updateUI()
                                   }
 ```
 
-### Combine → Flow
+## Combine → Flow
 
 ```swift
 // Swift Combine                  // Kotlin Flow
@@ -436,7 +452,7 @@ let subject =                     val channel = Channel<String>()
 subject.send("Hello")             sharedFlow.emit("Hello")
 ```
 
-### Property Wrappers → Delegated Properties
+## Property Wrappers → Delegated Properties
 
 ```swift
 // Swift                          // Kotlin
@@ -465,7 +481,7 @@ struct Logged<Value> {                private var value = initialValue
             value = newValue              this.value = value
         }                             }
     }                             }
-}                                 
+}
                                   var name: String by Logged("initial")
 @Logged var name = "initial"
 ```

@@ -1,5 +1,27 @@
 # iOS to Android Dependency Mappings
 
+## Table of Contents
+
+- [Networking](#networking)
+- [JSON/Serialization](#jsonserialization)
+- [Image Loading](#image-loading)
+- [Database/Persistence](#databasepersistence)
+- [Reactive/Async](#reactiveasync)
+- [Dependency Injection](#dependency-injection)
+- [UI Components](#ui-components)
+- [Authentication](#authentication)
+- [Analytics/Crash Reporting](#analyticscrash-reporting)
+- [Push Notifications](#push-notifications)
+- [Maps/Location](#mapslocation)
+- [Payment](#payment)
+- [Logging](#logging)
+- [Testing](#testing)
+- [Build Tools](#build-tools)
+- [Crypto/Security](#cryptosecurity)
+- [Date/Time](#datetime)
+- [Architecture Components](#architecture-components)
+- [Gradle Dependencies Template](#gradle-dependencies-template)
+
 ## Networking
 
 | iOS | Android | Notes |
@@ -175,35 +197,35 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
-    
+
     // Serialization
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
-    
+
     // Image Loading
     implementation("io.coil-kt:coil-compose:2.5.0")
-    
+
     // Database
     implementation("androidx.room:room-runtime:2.6.1")
     implementation("androidx.room:room-ktx:2.6.1")
     ksp("androidx.room:room-compiler:2.6.1")
-    
+
     // DataStore
     implementation("androidx.datastore:datastore-preferences:1.0.0")
-    
+
     // DI
     implementation("com.google.dagger:hilt-android:2.48.1")
     kapt("com.google.dagger:hilt-compiler:2.48.1")
-    
+
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
-    
+
     // Lifecycle
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.7.0")
-    
+
     // Navigation
     implementation("androidx.navigation:navigation-compose:2.7.6")
-    
+
     // Compose BOM
     implementation(platform("androidx.compose:compose-bom:2024.01.00"))
     implementation("androidx.compose.ui:ui")

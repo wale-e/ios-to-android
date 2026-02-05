@@ -1,5 +1,17 @@
 # SwiftUI to Jetpack Compose Mapping
 
+## Table of Contents
+
+- [Views / Composables](#views--composables)
+- [Layout Containers](#layout-containers)
+- [Modifiers](#modifiers)
+- [State Management](#state-management)
+- [Navigation](#navigation)
+- [Animations](#animations)
+- [Gestures](#gestures)
+- [Environment & Theming](#environment--theming)
+- [Common Patterns](#common-patterns)
+
 ## Views / Composables
 
 ### Basic Components
@@ -41,7 +53,7 @@ ProgressView()                    CircularProgressIndicator()
 ProgressView(value: 0.5)          LinearProgressIndicator(progress = 0.5f)
 ```
 
-### Layout Containers
+## Layout Containers
 
 ```swift
 // SwiftUI                        // Jetpack Compose
@@ -99,7 +111,7 @@ Spacer()                          Spacer(modifier = Modifier.weight(1f))
 Divider()                         Divider()
 ```
 
-### Modifiers
+## Modifiers
 
 ```swift
 // SwiftUI                        // Jetpack Compose
@@ -140,7 +152,7 @@ Divider()                         Divider()
 .safeAreaInset(edge: .bottom)     // Use WindowInsets.navigationBars, etc.
 ```
 
-### State Management
+## State Management
 
 ```swift
 // SwiftUI                        // Jetpack Compose
@@ -169,7 +181,7 @@ vm.items.count                    val items by vm.items.collectAsStateWithLifecy
                                   val preferences by dataStore.data.collectAsStateWithLifecycle()
 ```
 
-### Navigation
+## Navigation
 
 ```swift
 // SwiftUI                        // Jetpack Compose
@@ -201,9 +213,6 @@ NavigationLink(value: item) {     navController.navigate("detail/${item.id}")
                                       }
                                   }
 
-.fullScreenCover(                 // Use Dialog or full navigation
-    isPresented: $show) { }
-
 .alert("Title",                   if (showAlert) {
     isPresented: $show) {             AlertDialog(
     Button("OK") { }                      onDismissRequest = { showAlert = false },
@@ -215,12 +224,9 @@ NavigationLink(value: item) {     navController.navigate("detail/${item.id}")
                                           }
                                       )
                                   }
-
-.confirmationDialog(              // Use AlertDialog with multiple buttons
-    "Title", isPresented: $show)  // Or ModalBottomSheet with options
 ```
 
-### Animations
+## Animations
 
 ```swift
 // SwiftUI                        // Jetpack Compose
@@ -254,7 +260,7 @@ if condition {                    AnimatedContent(targetState = condition) { sta
 }
 ```
 
-### Gestures
+## Gestures
 
 ```swift
 // SwiftUI                        // Jetpack Compose
@@ -275,7 +281,7 @@ if condition {                    AnimatedContent(targetState = condition) { sta
 .highPriorityGesture(...)         // Use Modifier ordering for priority
 ```
 
-### Environment & Theming
+## Environment & Theming
 
 ```swift
 // SwiftUI                        // Jetpack Compose
@@ -297,7 +303,7 @@ Font.caption                      MaterialTheme.typography.bodySmall
 var myValue
 ```
 
-### Common Patterns
+## Common Patterns
 
 ```swift
 // Pull to refresh - SwiftUI      // Pull to refresh - Compose
